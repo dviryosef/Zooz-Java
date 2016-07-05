@@ -10,3 +10,7 @@ Important note: When registering your app in the web portal you need to supply "
 # Requirements
 
 Requires Java version greater than 6
+
+# Build 
+
+`mvn package`
