@@ -137,8 +137,8 @@
 
 
     <scm>
-        <connection>scm:git:git@git.zooz.co:General/ecomm-common.git</connection>
-        <developerConnection>scm:git:git@git.zooz.co:General/ecomm-common.git</developerConnection>
+        <connection>scm:git:git@github.com:Zooz/zooz-java.git</connection>
+        <developerConnection>scm:git:git@github.com:Zooz/zooz-java.git</developerConnection>
         <tag>ecomm-common-2.53.0.1</tag>
     </scm>
 
