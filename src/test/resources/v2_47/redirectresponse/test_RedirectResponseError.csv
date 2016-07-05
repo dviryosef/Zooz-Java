@@ -1,0 +1,1 @@
+{"responseStatus":-1,"responseObject":{"errorDescription":"Card was declined. We will not be able to process any funds for this card at this moment.","responseErrorCode":"393752","risk":{"results":[{"action":"BLOCK","context":"FDSPreAuth","riskScore":"1000","description":"Transaction blocked by risk-engine."}]}}}

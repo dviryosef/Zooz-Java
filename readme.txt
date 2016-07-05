@@ -1,0 +1,388 @@
+ ZooZ E-Comm SDK
+ ============================
+
+ This library allows you to integrate ZooZ e-comm payments into your java web site.
+
+
+ Registration
+ ==============================
+ To use ZooZ SDK it is required to receive API credentials.
+ In order to receive these credentials please register your app in ZooZ portal.
+ http://www.zooz.com
+
+ Important note:
+ When registering your app in the web portal you need to supply "Unique ID" in the app registration form.
+
+
+
+ Version changes
+ =============================
+
+ v2.0.1 - June 8th 2014
+ -----------------------------
+
+1. Change all names of parameters with the word "transaction" in "PaymentDetailsResponse" to "payment".
+2. Added custom connection manager parameter to Controller constructor. Allows the host program to send its own connection manager.
+3. Renamed json response object to be camelCase.
+4. Controller sendRequest method signature changed to IOException
+
+
+ v2.0.2 - June 9th 2014
+ -----------------------------
+ 1. Renamed AdditionalDetails to CustomerDetails in OpenPaymentRequest and GetTokenRequest
+ 2. Change double amount in PaymentDetails to Double Amount
+ 3. Add RegisterDetails class  - in use for the GetTokenRequest.
+ 4. Address Object - street parameter split to address1 and address2.
+
+  v2.0.3 - June 10th 2014
+ -----------------------------
+ 1. Changed customerLoginId to customerLoginID in PaymentDetailsResponse and RemovePaymentMethodRequest.
+ 2. Removed errorMessage from ZoozResponseObject.
+ 3. Add fraudDetectionResponse to AuthorizeResponse.
+
+  v2.1.0 - June 11th 2014
+ -----------------------------
+ 1. Minor bug fix - constructor of address not setting zipCode.
+ 2. Added refund API
+
+  v2.2.0 - June 18th 2014
+ -----------------------------
+ 1. billingAddress added to FundSource.
+ 2. Fix bug in Addresses mapping in GetPaymentDetails response.
+ 3. HttpControllerConnectionsMonitor changed to be public class.
+ 4. Added the following:
+    a. An enum - PaymentMethodType, which includes the supported types.
+    b. Three classes, CreditCardAuthorizeRequest, ThreeDSecureAuthorizeRequest and RedirectAuthorizeRequest which extends the abstract class AuthorizeRequest.
+ 5. Changed PaymentMethod , PaymentMethodDetails, correspondingly to the changes.
+
+ v2.3.0 - June 19th 2014
+-----------------------------
+ 1. Add toString to all beans.
+ 2. Fix bug in content type sending of HttpClient.
+ 3. Add an Invoice (optional field) to the CommitRequest.
+
+
+ v2.4.0 - June 24th 2014
+ -----------------------------
+ 1. Add update.requests package:
+ AbstractUpdate, AbstractUpdatePayment, UpdatePaymentDetailsRequest , UpdatePaymentAndInvoiceRequest, UpdateShipping, UpdateUserDetails - so you can update the payment details without replacing the token.
+ 2. Added convenient constructor for GetTokenRequest that encapsulate the default token type.
+ 3. Add a "paymentSubject" field to PaymentMethodDetails , and a getter/setter to RedirectAuthorizeRequest class - optional used for AliPay.
+
+ v2.5.0 - July 3rd 2014
+ -----------------------------
+ 1. Change AuthorizeRequest, ZoozRequest class name to AbstractAuthorizeRequest AbstractZoozRequest to maintain naming convention.
+ 2. Add RefundReason enum and refundReason parameter to the RefundRequest.
+ 3. changed riskScore "not available" value to -1, add taxAmount to paymentDetails.
+ 4. add 'address3' to Address.
+
+v2.5.1 - July 10th 2014
+-----------------------------
+ 1. add 'voidReferenceId' to VoidResponse
+ 2. add 'avsCode', 'refunds' and 'captures' to paymentDetailsResponse.
+ 3. add a 'paymentMethod' object with all card details, instead of having a separate fields for 'lastFourDigits', 'cardHolderName' , 'fundSourceType' in getPaymentDetails response.
+ 4. add FinancialAction object for wrapping the list of the received refunds/captures in getPaymentDetails response
+ 5. add 'processorReferenceId' to AuthorizeResponse - used as a request ID as set by the processor for tracking calls with the processor.
+ 6. add 'authorizationCode', 'processorReferenceId', 'country' , 'paymentType' and removed authorizationNumber from/to PaymentDetailsResponse.
+
+
+
+ v2.6.0 - July 14th 2014
+ ----------------------------
+ 1. Add getExpirationMonth and getExpirationYear strings from FundSource object.
+ 2. Add 'paymentMode' field and setter to 'paymentMethodDetails' used for PayEase integrations. More details in PayEase integration document.
+ 3. Add BIN number to FundSource Object.
+ 4. Add 'refundAmount' to payment details response - represents the total amount that was refunded to the user.
+
+
+ v2.7.0 - July 16th 2014
+ ----------------------------
+ 1. Add mandatory unique transaction id to refund request & commit request.
+
+
+ v2.8.0 - July 21st 2014
+  --------------------------------
+ 1. Add Javadoc to all of the API's and classes in the ecomm-common.
+ 2. Add merchantId to AuthorizeResponse and PaymentDetailsResponse.
+ 3. Add paymentMethodStatus to FundSource.
+
+
+ v2.9.0 - August 3rd 2014
+ ----------------------------------
+ 1. AbstractAuthorizeRequest: change merchantDefinedData to merchantCustomData
+
+
+ v2.10.0 - August 5th 2014
+ ----------------------------------
+  1. Add two fields to the Address object - "gender" and "title".
+
+
+ v2.11.0 - August 10th 2014
+ ----------------------------------
+  1. Add processorResultCode field to PaymentDetailsResponse
+  2. Add two fields to the Address object - "gender" and "title".
+  3. Add "isMOTO" boolean parameter to AbstractAuthorizeRequest.
+  4. Add a constructor to AbstractAuthorizeRequest which supports having an authorization request without an IP address.
+
+
+ v2.12.0 - August 13th 2014
+ ----------------------------------
+ 1. Change "processorCode" in FinancialAction to "referenceId"
+ 2. Add "reconciliationId" to the CommitRequest,CommitResponse, RefundRequest,RefundResponse,FinancialAction.
+ 3. Authorization Response - add processorResultCode field
+ 4. Change "processorResultCode" (a field in PaymentDetailsResponse) type from int to Integer.
+
+
+ v2.16.0 - September 29th 2014
+ ----------------------------------
+ 1. Change getPaymentDetails eci field from double to String
+ 2. Added originalResponse field to commitResponse and RefundResponse. This is used in case there is a "duplicate" error response on commit / refund
+ 3. Add client.request package (including client ClientAddPaymentMethodRequest and ClientRemovePaymentMethodRequest).
+ 4. Add client.beans package (including ClientConfiguration , ClientPaymentMethod, ClientPaymentMethodDetails).
+ 5. Add logging to Controller, to log failures and errors.
+
+
+ v2.17.0 - October 6th 2014
+ ----------------------------------
+ 1. Add ZooZUniqueID to PaymentDetailsResponse
+
+
+ v2.19.0 - October 22nd 2014
+ ----------------------------------
+ 1. Add paymentToken to getPaymentDetails response
+ 2. Add getters, setters, and empty constructor to the Client.beans and Client.request classes.
+ 3. Add paymentID to OpenPaymentResponse
+
+
+ v2.20.0 - November 18th 2014
+ ----------------------------------
+ 1. Change the authorization hierarchy - AbstractAuthorizeRequest became AbstractPurchaseRequest, and AbstractAuthorizeRequest will extend it, as well as AbstractSaleRequest
+   which created to support the "sale " API.
+   it created to support passing the "command" as parameter.
+   the "CreditCardSaleRequest"and "RedirectSaleRequest" extends the AbstractSaleRequest.
+   the "RedirectSaleResponse" extends the "SaleResponse", which was created to support the response of the "sale" API.
+ 2. Processor error code added to response
+
+
+ v2.21.0 - November 27th 2014
+ ---------------------------
+ 1. Add "reconciliationId" to "authorizePayment" request.
+ 2. Add "reconciliationId" to "getPaymentDetails" response.
+ 3. Add "signature" to PaymentDetailsResponse
+ 4. Add "paymentMethodLastUsedTimestamp" to FundSource
+
+
+ v2.26.0 - December 14th 2014
+ ----------------------------------
+
+ 1. Add paymentInstallments to CreditCardAuthorizeRequest and CreditCardSaleRequest, the PaymentInstallment object contains numOfInstallments, firstInstallmentAmount, remainingInstallmentsAmount.
+ 2. Add paymentInstallments to PaymentDetailsResponse.
+ 3. Add email address to all authorize.requests classes
+
+ v2.29.0 - December 28th 2014
+ ------------------------------------
+ 1. Add terminalId to PaymentDetailsResponse.
+ 2. Add userIdNumber to ClientPaymentMethodDetails
+
+
+ v2.30.0 - January 8th 2015
+ ------------------------------------
+  1. Add reconciliationId to AuthorizeResponse.
+
+
+ v2.31.0 - January 25th 2015
+ ------------------------------------
+  1. Add refundStatus to refund response
+  2. Support subscriptions containing the following classes: CancelSubscriptionRequest, CreateSubscriptionPlanRequest, GetSubscriptionDetailsRequest,
+     CancelSubscriptionResponse, CreateSubscriptionPlanResponse, GetSubscriptionDetailsResponse
+
+ v2.34.0 - February 24th 2015
+ ------------------------------------
+  1. Change appKey & uniqueId property names to programKey & programId
+  2. Add Sale API with uniqueTransactionId
+
+ v2.35.0 - March 24th 2015
+ ------------------------------------
+  1. Add apple pay to authorize and sale API. ApplePayAuthorizeRequest to use Authorize API using apple decrypted or encrypted data, and ApplePaySaleRequest to use Sale API using apple decrypted or encrypted data.
+  2. Add Sale API with uniqueTransactionId
+
+ v2.36.0 - March 24th 2015
+ ------------------------------------
+  1. Support Credit API, and change the sale and authorize hierarchy:
+         - AbstractSaleRequest and AbstractAuthorizeRequest will extend AbstractUserPurchaseRequest, which was created to distinguish between payments initiated by users (authorize and sale), and payment initiated by merchants (credit)
+         - AbstractUserPurchaseRequest will extend AbstractPurchaseRequest
+         - Support Credit API- CreditRequest will extend AbstractPurchaseRequest
+  2. Add CreditResponse for the Credit API
+
+ v2.37.0 - April 20th 2015
+ ------------------------------------
+  1. Add new eWallet - "MercadoPago" to eccomm-common through PaymentMethodType.
+  2. Add isApplePay flag to FundSource for getPaymentDetails API.
+  3. Add allowPayPalCreditCardPayment to the PaymentMethodDetails and RedirectAuthorizeRequest.
+  4. Add UpdateSubscriptionBillingAddress
+  5. Removed 'subscriptionId' parameter from CreateSubscriptionPlanResponse, GetSubscriptionDetailsResponse and CancelSubscriptionResponse
+  6. Add 'numOfSuccessfulPayments' parameter to GetSubscriptionDetailsResponse
+  7. Remove 'isSandBox' and 'endDate' parameters from CancelSubscriptionResponse
+
+ v2.39.0 - May 12th 2015
+ ------------------------------------
+  1. Add PayPal payment method for subscriptions.
+  2. Add redirectUrl to CreateSubscriptionPlanResponse
+  3. Add subscriptionDescription to SubscriptionDetails
+  4. Add subscriptionDescription to GetSubscriptionDetailsResponse
+  
+ v2.40.0 - May 17th 2015
+ ------------------------------------
+ 1. Add billing address to Authorize and Sale API's.
+
+ v2.41.0 - June 4th 2015
+ ------------------------------------
+  1. Add new alternativePayment types - "Sofort", "CreditCardHosted", "Ideal", "ELVHosted" to ecomm-common through PaymentMethodType.
+  2. Add installments to MercadoPago
+
+
+  v2.42.0 - July 21th 2015
+ ------------------------------------
+  1. Added "Risk" object. This object contains the results from ZooZ Risk Engine for a certain payment.
+  2. Added Risk to PaymentDetailsResponse, CreditResponse, AuthorizeResponse and SaleResponse.
+  3. Added 'processorName' parameter to the following responses: 'SaleResponse', 'CreditResponse', 'AuthorizeResponse',
+     'PaymentDetailsResponse', 'getSubscriptionDetailsResponse', 'RefundResponse', 'VoidResponse' and 'CommitResponse'
+  4. Added "shippingMethod". The shipping method for the user.
+  5. Added "discountRates" object. This array contains the discounts list for this user.
+     Each “discount” object contains the discount "code" and the "rate" which
+     is represent by number (double) between 0 to 100.
+  6. Added "deviceFingerprint" object. This object contains mapping between device name to its fingerprint.
+
+
+  v2.43.0 - August 21th 2015
+ ------------------------------------
+  1. Added "History" list to GetPaymentDetailsResponse. This list contains HistoryTransaction objects represent the historical financial transactions, order by creation date.
+     Each HistoryTransaction contains: 'transactionId' , 'type' and 'status'.
+  2. Add new eWallet - "Yandex" to eccomm-common through PaymentMethodType.
+  
+
+  v2.44.0 - August 26th 2015
+ ------------------------------------
+  1. Add payerId field to FundSource, the fund source object which we get upon PaymentDetailsResponse,
+  2. Remove invoice for commit request
+  3. Added invoiceAmountItem list to the commit and refund request
+
+
+  v2.45.0 - September 2nd 2015
+ ------------------------------------
+ 1. Added a new constructor to CreditCardAuthorizeRequest. This constructor supports the ability to determine whether to perform 3DSecure dynamically (as a result of the ZooZ Risk Engine decision), without the need to pass the authorize3DSecure flag.
+
+
+  v2.46.0 - September 21st 2015
+ ------------------------------------
+ 1. Added Risk to AddPaymentMethodResponse.
+
+  v2.47.0 - October 13st 2015
+  ------------------------------------
+ 1. Add new alternative payment - "CUP" to ecomm-common through PaymentMethodType.
+ 2. Add Server to server 'AddPaymentMethod' API.
+
+ v2.48.0 - November 4st 2015
+ ------------------------------------
+ 1. Fix bug - NPE when creating a PaymentDetailsSignatureCalculator object, adding uni-tests as well.
+ 2. Added "riskScoreOrigin" to RiskResult. "riskScoreOrigin" is the origin of the risk score, in case a risk score was returned - if the risk score is returned from an external provider then the name of the provider will be returned, otherwise "MerchantCalculated" will be returned.
+ 3. Added "determiningRule" to RiskResult. "determiningRule" is the name of rule that determined the ZRE action.
+
+ v2.49.0 - November 22nd 2015
+ ------------------------------------
+ 1. Added deviceFingerprint parameter to addPaymentMethod.
+
+
+  v2.50.0 - November 30th 2015
+  ------------------------------------
+ 1. Add new alternative payment - "Trustly" to ecomm-common through PaymentMethodType.
+
+
+ v2.50.0.1 - November 30th 2015
+ ------------------------------------
+ 1. Bug fix - error on deserialization of RiskResult.
+
+
+ v2.50.0.5 - December 8th 2015
+ ------------------------------------
+ 1. Add new alternative payment - "Qiwi" to ecomm-common through PaymentMethodType.
+
+
+ v2.50.0.6 - December 9st 2015
+ ------------------------------------
+ 1. Changes in AddPaymentMethod Requests (client & server):
+    1. Add PaymentMethodType.PayPal.
+    2. Add redirectUrl in PaymentMethodDetails
+ 2. Changes in AddPaymentMethod Requests (server only):
+    1. Add userAgent and IpAddress parameters.
+ 3. new PayPalAuthorizeRequest.
+
+
+ v2.50.0.7 - December 21st 2015
+ ------------------------------------
+ 1. Add 'merchantCustomData' to paymentDetailsResponse.
+
+
+ v2.50.0.8 - December 23rd 2015
+ ------------------------------------
+ 1. Add ipAddress to PayPalAuthorizeRequest constructor.
+
+ v2.51.0.0 - January 3rd 2016
+ ------------------------------------
+ 1. Add 3D secure attributes.
+
+ v2.52.0.0 - January 20rd 2016
+ ------------------------------------
+ 1. Add mobile device information attributes to getPaymentDetails.
+ 2. Add MobileDeviceInformation class (deviceInformation)
+ 3. Add xid and encoding type for 3DS information to getPaymentDetails.
+
+ v2.53.0.0 - March 1st 2016
+  ------------------------------------
+ 1. Add paymentMethod -> additionalDetails elements to getPaymentDetails response.
+ 2. Add risk element score from external source (DataCash) to IPN/GetPaymentDetails request.
+ 3. Add binDetails attributes to getPaymentDetails/addPaymentMethod/getPaymentMethods/IPN
+ 4. Add new PaymentMethodIPN for add/remove payment method
+
+
+ v2.54.0.0 -
+  ------------------------------------
+  1. Add lastSuccessfulUsed attributes to getPaymentDetails/addPaymentMethod/getPaymentMethods/IPN
+  2. Add Android Pay support to sale and authorize requests
+  3. Added Klarna PaymentMethodType
+  4. Added TaxPercentage to every request that includes taxAmount
+  5. Additions to invoice sent in OpenPaymentRequest and UpdatePaymentAndInvoiceRequest:
+      - Added Shipping/Handling and Discount items to invoice
+      - Added tax percentage to each item and to the invoice
+  6. Addition to User sent in OpenPaymentRequest and UdateUserDetailsRequest:
+      - Added language
+      - Added birthDay
+  7. Additions to Address:
+      - Added salutation
+  8. Additions to CommitReuest:
+      - Added CommitInvoice member that includes items,shipping,handling,discount and paymentduedate
+  9. Additions to RefundRequest:
+      - Added ReferenceInvoice member that includes items,shipping,handling and discount
+  10. Additions to CommitResponse:
+     - zooz Action ID
+     - providerCustomData
+  11. Additions to PaymentDetailsResponse:
+     - Added taxPercentage
+     - Added Invoice,providerCustomdata and zooz Action ID to each capture and refund
+     - Added CustomerMessage
+  12. Supporting GetTax, containing the following API classes: GetTaxResponse, GetTaxRequest, GetTaxRequestAddress,
+      Line, TaxAddress, TaxDetail, TaxLine, TaxOverrideDef, AdditionalExternalServicesErrorResponse,
+      ZooZExternalServicesResponseObject and the following enums  AccountingMethod, BoundaryLevel,
+      DetailLevel, DocType, JurisdictionType, ServiceMode, TaxType.
+
+  Latest release
+  ------------------------------------
+  1. GetPaymentDetails - Added captureActionID to each refund in refunds list
+  2. FundSource - Add payerStatus to PayPal fundsource in GetPaymentDetails and GetPaymentMethods responses.
+  3. GetSubscriptionDetailsResponse - add paymentMethodToken.
+  4. Added providerCustomData to authorize response.
+  5. Added BillPay as paymentMethodType.
+  6. Populate paymentMethodToken in PayPal CreateSubscriptionPlan request.
+  7. Add number in invoice in commit requests and in getPaymentDetails.captures
+  8. Add providerCustomData to getPaymentDetails response.
+  9. Add paymentMode to getPaymentDetails response.

@@ -1,0 +1,3 @@
+{"responseStatus":-1,"responseObject":{"errorDescription":"Field [paymentToken] is mandatory","responseErrorCode":"262725"}}
+{"responseStatus":5,"responseObject":{"errorDescription":"Sorry, cannot complete refund process. Contact the app developer for help.","responseErrorCode":"393480"}}
+{"responseStatus":-1,"responseObject":{"errorDescription":"Total refund amount cannot be higher than the original transaction amount.","responseErrorCode":"262451","refundAmount":0.0}}

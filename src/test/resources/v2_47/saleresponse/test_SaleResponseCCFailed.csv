@@ -1,0 +1,2 @@
+{"responseStatus":-1,"responseObject":{"errorDescription":"Field [paymentToken] is mandatory","responseErrorCode":"262725"}}
+{"responseStatus":-1,"responseObject":{"errorDescription":"Sorry, but we were unable to process your request. Please contact the app developer.","responseErrorCode":"327938","processorError":{"declineCode":150,"declineReason":"General system failure."}}}

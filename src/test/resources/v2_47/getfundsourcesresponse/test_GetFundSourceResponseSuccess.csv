@@ -1,0 +1,2 @@
+{"responseStatus":0,"responseObject":{"paymentMethods":[]}}
+{"responseStatus":0,"responseObject":{"paymentMethods":[{"cardHolderName":"tester1","validDate":1569790800000,"expirationMonth":"9","expirationYear":"2019","subtype":"MasterCard","paymentMethodToken":"JUTFWV2L3IE7253BBREFXI54DE","lastFourDigits":"0106","paymentMethodType":"CreditCard","binNumber":"520000","billingAddress":null,"paymentMethodStatus":0,"paymentMethodLastUsedTimestamp":1450272291000,"payerId":null,"email":null,"applePay":false}]}}
