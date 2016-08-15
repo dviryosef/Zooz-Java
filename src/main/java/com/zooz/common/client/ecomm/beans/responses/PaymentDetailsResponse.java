@@ -375,6 +375,18 @@ public class PaymentDetailsResponse extends ZoozResponseObject implements ZoozIP
     private ExternalRisk externalRisk;
 
     /**
+     * For payment of type Subscription - the period number in which the payment was triggered
+     */
+    @JsonProperty
+    private String currentPeriodNumber;
+    /**
+     * The subscription information (for payment of type Subscription)
+     */
+    @JsonProperty
+    private SubscriptionInformation subscription;
+
+
+    /**
      * Instantiates a new Payment details response.
      */
     public PaymentDetailsResponse() {
@@ -1445,8 +1457,46 @@ public class PaymentDetailsResponse extends ZoozResponseObject implements ZoozIP
         this.externalRisk = externalRisk;
     }
 
+    /**
+     * Gets the subscription information (for payment of type Subscription)
+     *
+     * @return SubscriptionInformation
+     */
+    public SubscriptionInformation getSubscription() {
+        return subscription;
+    }
+
+    /**
+     * Sets the subscription information (for payment of type Subscription)
+     *
+     * @param subscription the subscription information
+     */
+    public void setSubscription(SubscriptionInformation subscription) {
+        this.subscription = subscription;
+    }
+
+    /**
+     * Gets the subscription period number in which the payment was triggered  (for payment of type Subscription)
+     *
+     * @return current period number in which the payment was triggered
+     */
+    public String getCurrentPeriodNumber() {
+        return currentPeriodNumber;
+    }
+
+    /**
+     * Sets the period number in which the payment was triggered (for payment of type Subscription)
+     *
+     * @param currentPeriodNumber the period number in which the payment was triggered
+     */
+    public void setCurrentPeriodNumber(String currentPeriodNumber) {
+        this.currentPeriodNumber = currentPeriodNumber;
+    }
+
     @Override
     public NotificationType getIPNType() {
         return NotificationType.PaymentIPN;
     }
+
+
 }

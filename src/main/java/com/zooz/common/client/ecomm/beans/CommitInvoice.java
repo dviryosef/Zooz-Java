@@ -25,8 +25,8 @@ public class CommitInvoice extends ReferenceInvoice {
      * @param handlingAmountDetails   Invoice handling amount details
      * @param discountAmountDetails   Invoice discount amount details
      * @param items                   List of invoice Items
-     * @param delayDate          The payment due date
-     * @param number
+     * @param delayDate             The payment due date
+     * @param number                invoice number
      */
     public CommitInvoice(InvoiceDetailAmountItem shippingAmountDetails,
                          InvoiceDetailAmountItem handlingAmountDetails,
