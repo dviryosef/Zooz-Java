@@ -10,11 +10,11 @@ import com.zooz.common.client.ecomm.beans.requests.GetTokenRequest;
 import com.zooz.common.client.ecomm.beans.responses.GetTokenResponse;
 import com.zooz.common.client.ecomm.beans.responses.VoidResponse;
 import com.zooz.common.client.ecomm.beans.server.response.ZoozServerResponse;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.junit.*;
 import org.junit.rules.TestName;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 
 /**
  * Created by Zooz
@@ -95,7 +95,7 @@ public class ControllerTest {
 
     }
 
-    @Test(expected = ConnectTimeoutException.class)
+    @Test(expected = SocketTimeoutException.class)
     public void sendRequest_failOnTimeout() throws IOException {
         Controller controller = new Controller();
 

@@ -359,7 +359,7 @@ v2.5.1 - July 10th 2014
       ZoozExternalServicesResponseObject and the following enums  AccountingMethod, BoundaryLevel,
       DetailLevel, DocType, JurisdictionType, ServiceMode, TaxType.
 
-  Latest release
+ v2.55.0.0 -
   ------------------------------------
   1. GetPaymentDetails - Added captureActionID to each refund in refunds list
   2. FundSource - Add payerStatus to PayPal fundsource in GetPaymentDetails and GetPaymentMethods responses.
@@ -370,3 +370,15 @@ v2.5.1 - July 10th 2014
   7. Add number in invoice in commit requests and in getPaymentDetails.captures
   8. Add providerCustomData to getPaymentDetails response.
   9. Add paymentMode to getPaymentDetails response.
+
+  Latest release
+  ------------------------------------
+  1. GetSubscriptionDetailsResponse:
+        - add subscriptionToken
+        - add amount
+        - add currencyCode
+        - add payments array
+  2. GetPaymentDetails (relevant to subscription payments only):
+        - add subscriptionInformation object
+        - add currentPeriodNumber
+

@@ -47,6 +47,7 @@ public class ReferenceInvoice extends AbstractJsonBean {
      * @param handlingDetails   Invoice handling amount details
      * @param discountDetails   Invoice discount amount details
      * @param items             List of invoice Items
+     * @param number            The invoice number
      */
     public ReferenceInvoice(InvoiceDetailAmountItem shippingDetails,
                             InvoiceDetailAmountItem handlingDetails,

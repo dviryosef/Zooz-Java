@@ -8,6 +8,9 @@ package com.zooz.common.client.ecomm.beans.responses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.zooz.common.client.ecomm.beans.SubscriptionPayment;
+
+import java.util.List;
 
 /**
  * The GetSubscriptionDetailsResponse includes any of the response parameter returns for the corresponding requests:
@@ -77,6 +80,30 @@ public class GetSubscriptionDetailsResponse extends ZoozResponseObject {
      */
     @JsonProperty
     private String paymentMethodToken;
+
+    /**
+     * The total amount to pay.
+     */
+    @JsonProperty
+    private Double amount;
+
+    /**
+     * The paid currency ISO code, for instance: USD, EUR, GBP
+     */
+    @JsonProperty
+    private String currencyCode;
+
+    /**
+     * the token of the subscription
+     */
+    @JsonProperty
+    private String subscriptionToken;
+
+    /**
+     * List of payments that were made as part of the subscription.
+     */
+    @JsonProperty
+    private List<SubscriptionPayment> payments;
 
     /**
      * Get the end date of the subscription, when the subscription will expire
@@ -260,7 +287,7 @@ public class GetSubscriptionDetailsResponse extends ZoozResponseObject {
 
 
     /**
-     *  Get payment methodthat could be used for creating future subscriptions
+     *  Get payment method that could be used for creating future subscriptions
      * @return paymentMethodToken
      */
     public String getPaymentMethodToken() {
@@ -269,9 +296,74 @@ public class GetSubscriptionDetailsResponse extends ZoozResponseObject {
 
     /**
      * Set paymentMethodToken that could be used for creating future subscriptions
-     * @param paymentMethodToken
+     * @param paymentMethodToken payment method token
      */
     public void setPaymentMethodToken(String paymentMethodToken) {
         this.paymentMethodToken = paymentMethodToken;
+    }
+
+    /**
+     * Gets the amount.
+     *
+     * @return the amount
+     */
+    public Double getAmount() {
+        return amount;
+    }
+
+    /**
+     * Sets the amount.
+     *
+     * @param amount the amount
+     */
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * Gets the paid currency ISO code, for instance: USD, EUR, GBP.
+     *
+     * @return Value of the paid currency ISO code, for instance: USD, EUR, GBP.
+     */
+    public String getCurrencyCode() { return currencyCode; }
+
+    /**
+     * Sets new paid currency ISO code, for instance: USD, EUR, GBP.
+     *
+     * @param currencyCode New value of the paid currency ISO code, for instance: USD, EUR, GBP.
+     */
+    public void setCurrencyCode(String currencyCode) { this.currencyCode = currencyCode; }
+
+
+    /**
+     *  Get a list of payments that belong to the subsctiption
+     * @return payments list of payments that belong to the subscription
+     */
+    public List<SubscriptionPayment> getPayments() {
+        return payments;
+    }
+
+    /**
+     * Set a list of payments that belong to the subscription
+     * @param payments list of payments that belong to the subscription
+     */
+    public void setPayments(List<SubscriptionPayment> payments) {
+        this.payments = payments;
+    }
+
+    /**
+     *  Get the subscriptionToken
+     * @return subscriptionToken
+     */
+    public String getSubscriptionToken() {
+        return subscriptionToken;
+    }
+
+    /**
+     * Set the subscriptionToken
+     * @param subscriptionToken subscription token
+     */
+    public void setSubscriptionToken(String subscriptionToken) {
+        this.subscriptionToken = subscriptionToken;
     }
 }
