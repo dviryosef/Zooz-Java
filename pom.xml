@@ -5,7 +5,7 @@
 
     <groupId>com.zooz.ecomm</groupId>
     <artifactId>ecomm-common</artifactId>
-    <version>2.60.0.1-SNAPSHOT</version>
+    <version>2.60.0.1</version>
     <description>ZooZ ecommerce API common jar</description>
     <packaging>jar</packaging>
 
