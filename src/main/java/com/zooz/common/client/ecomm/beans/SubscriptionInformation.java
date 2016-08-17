@@ -12,12 +12,12 @@ public class SubscriptionInformation {
      * The startDate of the subscription (default = now )
      */
     @JsonProperty
-    private String startDate;
+    private Long startDate;
     /**
      * The endDate of the subscription (default = now )
      */
     @JsonProperty
-    private String endDate;
+    private Long endDate;
     /**
      * The paid periodUnit :day, week, month, year
      */
@@ -45,7 +45,7 @@ public class SubscriptionInformation {
     @JsonProperty
     private String subscriptionToken;
 
-    public SubscriptionInformation(String startDate, String endDate, String periodUnit, String recurring, String periodNumber ,String subscriptionToken) {
+    public SubscriptionInformation(Long startDate, Long endDate, String periodUnit, String recurring, String periodNumber ,String subscriptionToken) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.periodUnit = periodUnit;
@@ -57,19 +57,19 @@ public class SubscriptionInformation {
     public SubscriptionInformation() {}
 
 
-    public String getStartDate() {
+    public Long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Long startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Long endDate) {
         this.endDate = endDate;
     }
 

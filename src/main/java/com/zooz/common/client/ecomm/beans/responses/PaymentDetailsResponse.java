@@ -378,7 +378,7 @@ public class PaymentDetailsResponse extends ZoozResponseObject implements ZoozIP
      * For payment of type Subscription - the period number in which the payment was triggered
      */
     @JsonProperty
-    private String currentPeriodNumber;
+    private String subscriptionPaymentNumber;
     /**
      * The subscription information (for payment of type Subscription)
      */
@@ -1480,17 +1480,17 @@ public class PaymentDetailsResponse extends ZoozResponseObject implements ZoozIP
      *
      * @return current period number in which the payment was triggered
      */
-    public String getCurrentPeriodNumber() {
-        return currentPeriodNumber;
+    public String getSubscriptionPaymentNumber() {
+        return subscriptionPaymentNumber;
     }
 
     /**
      * Sets the period number in which the payment was triggered (for payment of type Subscription)
      *
-     * @param currentPeriodNumber the period number in which the payment was triggered
+     * @param subscriptionPaymentNumber the period number in which the payment was triggered
      */
-    public void setCurrentPeriodNumber(String currentPeriodNumber) {
-        this.currentPeriodNumber = currentPeriodNumber;
+    public void setSubscriptionPaymentNumber(String subscriptionPaymentNumber) {
+        this.subscriptionPaymentNumber = subscriptionPaymentNumber;
     }
 
     @Override
