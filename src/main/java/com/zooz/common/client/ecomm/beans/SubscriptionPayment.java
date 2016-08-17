@@ -15,10 +15,10 @@ public class SubscriptionPayment {
     @JsonProperty
     private String timestamp;
     /**
-     * The periodNumber of the payment inside the subscription plan.
+     * The subscriptionPaymentNumber of the payment inside the subscription plan.
      */
     @JsonProperty
-    private int periodNumber;
+    private int subscriptionPaymentNumber;
     /**
      * The payment token.
      */
@@ -55,21 +55,21 @@ public class SubscriptionPayment {
     }
 
     /**
-     * Returns the periodNumber of the payment inside the subscription plan.
+     * Returns the subscriptionPaymentNumber of the payment inside the subscription plan.
      *
-     * @return a periodNumber of the payment inside the subscription plan.
+     * @return a subscriptionPaymentNumber of the payment inside the subscription plan.
      */
-    public int getPeriodNumber() {
-        return periodNumber;
+    public int getSubscriptionPaymentNumber() {
+        return subscriptionPaymentNumber;
     }
 
     /**
-     * Sets periodNumber of the payment inside the subscription plan.
+     * Sets subscriptionPaymentNumber of the payment inside the subscription plan.
      *
-     * @param periodNumber a periodNumber of the payment inside the subscription plan.
+     * @param subscriptionPaymentNumber a subscriptionPaymentNumber of the payment inside the subscription plan.
      */
-    public void setPeriodNumber(int periodNumber) {
-        this.periodNumber = periodNumber;
+    public void setSubscriptionPaymentNumber(int subscriptionPaymentNumber) {
+        this.subscriptionPaymentNumber = subscriptionPaymentNumber;
     }
 
     /**

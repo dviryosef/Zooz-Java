@@ -380,5 +380,5 @@ v2.5.1 - July 10th 2014
         - add payments array
   2. GetPaymentDetails (relevant to subscription payments only):
         - add subscriptionInformation object
-        - add currentPeriodNumber
+        - add subscriptionPaymentNumber
 
