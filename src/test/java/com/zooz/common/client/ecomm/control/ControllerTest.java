@@ -10,11 +10,11 @@ import com.zooz.common.client.ecomm.beans.requests.GetTokenRequest;
 import com.zooz.common.client.ecomm.beans.responses.GetTokenResponse;
 import com.zooz.common.client.ecomm.beans.responses.VoidResponse;
 import com.zooz.common.client.ecomm.beans.server.response.ZoozServerResponse;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.junit.*;
 import org.junit.rules.TestName;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 
 /**
  * Created by Zooz
@@ -35,7 +35,7 @@ public class ControllerTest {
 
     @BeforeClass
     public static void setup() throws IOException {
-        defaultWorkingSiteConfig = new ControllerSiteConfiguration("https://sandbox.zooz.co", "c2e2e708-2aa0-427e-9217-ecf5feae4f80", "com.zooz.Caap.sample");
+        defaultWorkingSiteConfig = new ControllerSiteConfiguration("https://sandbox.zooz.com", "c2e2e708-2aa0-427e-9217-ecf5feae4f80", "com.zooz.Caap.sample");
         CustomerDetails ad = new CustomerDetails("UnitTestCutomser", "UnitTestCutomser 1");
         RegisterDetails rd = new RegisterDetails("USD");
         rd.setBillingAddress(new Address("IL", "你好", "שלום", "français", "русский", "русский", "日本", "English", "None", null));
@@ -95,13 +95,13 @@ public class ControllerTest {
 
     }
 
-    @Test(expected = ConnectTimeoutException.class)
-    public void sendRequest_failOnTimeout() throws IOException {
+
+    @Test(expected = SocketTimeoutException.class)
+    public void sendRequest_failOnSocketTimeoutException() throws IOException {
         Controller controller = new Controller();
 
-        //removed https to http = should timeout
-        ControllerSiteConfiguration timedOutConfig = new ControllerSiteConfiguration("http://sandbox.zooz.co", "c2e2e708-2aa0-427e-9217-ecf5feae4f80", "com.zooz.Caap.sample");
-        timedOutConfig.setTimeouts(3000, 3, 3000);
+        ControllerSiteConfiguration timedOutConfig = new ControllerSiteConfiguration("https://sandbox.zooz.com", "c2e2e708-2aa0-427e-9217-ecf5feae4f80", "com.zooz.Caap.sample");
+        timedOutConfig.setTimeouts(3, 3000, 3000);
 
 
         ZoozServerResponse<GetTokenResponse> opr = null;
@@ -113,6 +113,7 @@ public class ControllerTest {
 
 
     }
+
 
 
     @Test

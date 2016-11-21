@@ -15,12 +15,25 @@ public class ProcessorErrorResponse {
     @JsonProperty
     private int declineCode;
 
+
     /**
      * Will return only on decline.
-     * Will be the reason for the decline as given from the issuer, processor, acquirer .
+     * Will be the  reason for the decline as given from the issuer, processor, acquirer .
      */
     @JsonProperty
     private String declineReason;
+
+
+
+
+    /**
+     * Will return only on decline.
+     * The name of the processor that processes the transaction
+     */
+    @JsonProperty
+    private String processorName;
+
+
 
     /**
      * Instantiates a new ProcessorErrorResponse.
@@ -67,5 +80,23 @@ public class ProcessorErrorResponse {
      */
     public void setDeclineReason(String declineReason) {
         this.declineReason = declineReason;
+    }
+
+    /**
+     * gets the processor name.
+     *
+     * @return processorName the processor name
+     */
+    public String getProcessorName() {
+        return processorName;
+    }
+
+    /**
+     * Sets the processor name.
+     *
+     * @param processorName the processor name
+     */
+    public void setProcessorName(String processorName) {
+        this.processorName = processorName;
     }
 }
