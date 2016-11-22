@@ -1,12 +1,8 @@
 package com.zooz.common.client.ecomm.beans.responses;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.zooz.common.client.ecomm.beans.FundSource;
 import com.zooz.common.client.ecomm.beans.Risk;
 import com.zooz.common.client.ecomm.beans.RiskResult;
-
-import com.zooz.common.client.ecomm.beans.responses.PaymentDetailsResponse;
-import com.zooz.common.client.ecomm.beans.responses.ZoozResponseObject;
 import com.zooz.common.client.ecomm.beans.server.response.ZoozServerResponse;
 import com.zooz.common.client.ecomm.control.Controller;
 import com.zooz.common.client.ecomm.control.ControllerSiteConfiguration;
@@ -19,9 +15,10 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.JSONCompareResult;
 
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Base class for all response unit tests
@@ -72,7 +69,7 @@ public abstract class ResponseTestBase<T extends ZoozResponseObject> {
                     JSONObject data = new JSONObject(o.toString());
                     JSONObject first = new JSONObject(item);
                     JSONCompareResult compRes = JSONCompare.compareJSON(first, data, JSONCompareMode.LENIENT);
-                    Assert.assertTrue(compRes.getFieldFailures().size() == 0);
+                    Assert.assertTrue(compRes.getMessage(),compRes.getFieldFailures().size() == 0);
 
                     Assert.assertNotNull("response status is null " + pair.getKey(), o.getResponseStatus());
                     Assert.assertNotNull("response object is null " + pair.getKey(), o.getResponseObject());
