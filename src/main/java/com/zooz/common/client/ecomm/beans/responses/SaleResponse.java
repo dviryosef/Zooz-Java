@@ -44,6 +44,12 @@ public class SaleResponse extends CreditResponse {
     private ExternalRisk externalRisk;
 
     /**
+     * The raw response of the cv2Avs check
+     */
+    @JsonProperty
+    private String cv2AvsRaw;
+
+    /**
      * Instantiates a new Sale response.
      */
     public SaleResponse() {
@@ -101,4 +107,20 @@ public class SaleResponse extends CreditResponse {
         this.risk = risk;
     }
 
+
+    /**
+     * Gets the raw response of the cv2Avs check
+     * @return the raw response of the cv2Avs check
+     */
+    public String getCv2AvsRaw() {
+        return cv2AvsRaw;
+    }
+
+    /**
+     * Sets the raw response of the cv2Avs check
+     * @param cv2AvsRaw the raw response of the cv2Avs check
+     */
+    public void setCv2AvsRaw(String cv2AvsRaw) {
+        this.cv2AvsRaw = cv2AvsRaw;
+    }
 }

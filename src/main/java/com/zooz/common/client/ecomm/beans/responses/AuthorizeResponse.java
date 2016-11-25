@@ -84,6 +84,12 @@ public class AuthorizeResponse extends ZooZProcessingResponseObject {
     private Map providerCustomData;
 
     /**
+     * The raw response of the cv2Avs check
+     */
+    @JsonProperty
+    private String cv2AvsRaw;
+
+    /**
      * Instantiates a new Authorize response.
      */
     public AuthorizeResponse() {
@@ -294,6 +300,22 @@ public class AuthorizeResponse extends ZooZProcessingResponseObject {
 
     public void setProviderCustomData(Map providerCustomData) {
         this.providerCustomData = providerCustomData;
+    }
+
+    /**
+     * Gets the raw response of the cv2Avs check
+     * @return the raw response of the cv2Avs check
+     */
+    public String getCv2AvsRaw() {
+        return cv2AvsRaw;
+    }
+
+    /**
+     * Sets the raw response of the cv2Avs check
+     * @param cv2AvsRaw the raw response of the cv2Avs check
+     */
+    public void setCv2AvsRaw(String cv2AvsRaw) {
+        this.cv2AvsRaw = cv2AvsRaw;
     }
 
 }
