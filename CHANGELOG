@@ -371,7 +371,7 @@ v2.5.1 - July 10th 2014
   8. Add providerCustomData to getPaymentDetails response.
   9. Add paymentMode to getPaymentDetails response.
 
-  v2.61.1.0 -
+  v2.60.0.1 -
   ------------------------------------
   1. GetSubscriptionDetailsResponse:
         - add subscriptionToken
@@ -382,6 +382,20 @@ v2.5.1 - July 10th 2014
         - add subscriptionInformation object
         - add subscriptionPaymentNumber
 
-  Latest release
+  v2.61.1.0 -
   ------------------------------------
   1. ProcessorErrorResponse - added processorName to the response
+
+
+  Latest release
+  ------------------------------------
+  1. AddPaymentMethodResponse:
+        - add cv2AvsRaw
+        - add processorName
+  2. AuthorizeResponse:
+        - add cv2AvsRaw
+  3. SaleResponse:
+        - add cv2AvsRaw
+
+
+

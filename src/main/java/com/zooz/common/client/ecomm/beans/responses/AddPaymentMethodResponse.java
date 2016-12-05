@@ -60,7 +60,11 @@ public class AddPaymentMethodResponse extends ZooZProcessingResponseObject {
     @JsonProperty
     private BinDetails binDetails;
 
+    @JsonProperty
+    private String cv2AvsRaw;
 
+    @JsonProperty
+    private String processorName;
     /**
      * Instantiates a new Add payment method response.
      */
@@ -344,4 +348,40 @@ public class AddPaymentMethodResponse extends ZooZProcessingResponseObject {
     public void setBinDetails(BinDetails binDetails) {
         this.binDetails = binDetails;
     }
+
+    /**
+     * Gets the raw response of the cv2Avs check
+     * @return the raw response of the cv2Avs check
+     */
+    public String getCv2AvsRaw() {
+        return cv2AvsRaw;
+    }
+
+    /**
+     * Sets the raw response of the cv2Avs check
+     * @param cv2AvsRaw the raw response of the cv2Avs check
+     */
+    public void setCv2AvsRaw(String cv2AvsRaw) {
+        this.cv2AvsRaw = cv2AvsRaw;
+    }
+
+    /**
+     * gets the name of the processor that processes the transaction
+     *
+     * @return processorName processor name
+     */
+    public String getProcessorName() {
+        return processorName;
+    }
+
+    /**
+     * Sets the name of the processor that processes the transaction
+     *
+     * @param processorName the processor name
+     */
+    public void setProcessorName(String processorName) {
+        this.processorName = processorName;
+    }
+
+
 }
