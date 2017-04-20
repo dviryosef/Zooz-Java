@@ -387,7 +387,7 @@ v2.5.1 - July 10th 2014
   1. ProcessorErrorResponse - added processorName to the response
 
 
-  Latest release
+  v2.63.0.0 -
   ------------------------------------
   1. AddPaymentMethodResponse:
         - add cv2AvsRaw
@@ -396,6 +396,10 @@ v2.5.1 - July 10th 2014
         - add cv2AvsRaw
   3. SaleResponse:
         - add cv2AvsRaw
+
+  v2.64.0.0 -
+  ------------------------------------
+  1. Add risk object to PaymentMethodIPN
 
 
 

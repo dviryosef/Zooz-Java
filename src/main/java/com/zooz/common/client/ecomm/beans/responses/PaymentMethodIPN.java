@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zooz.common.client.ecomm.beans.DeviceInformation;
 import com.zooz.common.client.ecomm.beans.FundSource;
+import com.zooz.common.client.ecomm.beans.Risk;
 import com.zooz.common.client.ecomm.beans.enums.NotificationStatus;
 import com.zooz.common.client.ecomm.beans.enums.NotificationType;
 
 import java.util.Map;
-
 /**
  * Payment method IPN details
  */
@@ -35,6 +35,9 @@ public class PaymentMethodIPN extends ZoozResponseObject implements ZoozIPNRespo
 
     @JsonProperty("signature")
     private String signature;
+
+    @JsonProperty("risk")
+    private Risk risk;
 
 
     /**
@@ -161,6 +164,24 @@ public class PaymentMethodIPN extends ZoozResponseObject implements ZoozIPNRespo
      */
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    /**
+     * gets the risk
+     *
+     * @return risk  - the risk
+     */
+    public Risk getRisk() {
+        return risk;
+    }
+
+    /**
+     * Sets the risk
+     *
+     * @param risk the risk
+     */
+    public void setRisk(Risk risk) {
+        this.risk = risk;
     }
 
     @Override
